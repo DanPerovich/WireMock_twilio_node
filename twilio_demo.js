@@ -10,18 +10,11 @@ const apiKey = process.env.TWILIO_API_KEY;
 const apiSecret = process.env.TWILIO_API_SECRET;
 const accountSid = process.env.TWILIO_ACCOUNT_SID;
 
-// Create a Twilio client with your credentials
-/* const client = twilio(apiKey, apiSecret, {
-    accountSid
-}); */
+// Create a Twilio client with your credentials using custom httpClient
 const client = twilio(apiKey, apiSecret, {
     accountSid,
     httpClient: new WireMockClient('https://twilio.wiremockapi.cloud', new RequestClient())
 });
-/* const client = twilio(apiKey, apiSecret, {
-    accountSid,
-    httpClient: new WireMockClient('https://m6r21.wiremockapi.cloud/', new RequestClient())
-}); */
 
 // Set the phone numbers for the sender (your Twilio number) and the recipient
 const fromPhoneNumber = '+18665942889';
